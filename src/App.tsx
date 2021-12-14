@@ -8,7 +8,8 @@ import ProyectarContenido2 from "./Ejemplo/ProyectarContenido2";
 import ContenidoDinamico from "./Ejemplo/ContenidoDinamico";
 import FormularioTexto from "./Ejemplo/FormularioTexto";
 import EjemploUseEffect from "./Ejemplo/EjemploUseEffect";
-
+import ValorContext from "./ValorContext";
+import Abuelo from "./Ejemplo/Abuelo";
 function App() {
   const [numero, setNumero] = useState(0);
   const [texto, setTexto] = useState("");
@@ -41,6 +42,9 @@ const suma = (numero1:number,numero2:number) => {
     <>
       <h1>Soy APP.tsx</h1>
 
+    <ValorContext.Provider value={texto}>
+      <Abuelo />
+    </ValorContext.Provider>
     <div>
       <input type="checkbox" 
        onChange={(e) => setChecked(e.currentTarget.checked)}
@@ -93,7 +97,6 @@ const suma = (numero1:number,numero2:number) => {
 
 <input type="text" name="num2" onChange={(e)  => {
       setNumeros(({...numeros,num2:parseInt(e.target.value)}))
-        
         }}/>
 
         {<div>{numeros.num1 && numeros.num2? suma(numeros.num1,numeros.num2): "resultado"}</div>}
