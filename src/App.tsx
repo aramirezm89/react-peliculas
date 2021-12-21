@@ -1,108 +1,71 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import MostrarTexto from "./Ejemplo/MostrarTexto";
+import React,{useEffect,useState} from "react";
 import "./App.css";
-import ProyectarContenido from "./Ejemplo/ProyectarContenido";
-import EjemploReloj from "./Ejemplo/EjemploReloj";
-import ProyectarContenido2 from "./Ejemplo/ProyectarContenido2";
-import ContenidoDinamico from "./Ejemplo/ContenidoDinamico";
-import FormularioTexto from "./Ejemplo/FormularioTexto";
-import EjemploUseEffect from "./Ejemplo/EjemploUseEffect";
-import ValorContext from "./ValorContext";
-import Abuelo from "./Ejemplo/Abuelo";
+import ListadoPeliculas from "./peliculas/ListadoPeliculas";
+import {typeMovies} from "./peliculas/PeliculasModelD";
+import Button from "./utils/Button";
+
 function App() {
-  const [numero, setNumero] = useState(0);
-  const [texto, setTexto] = useState("");
-  const [numeros,setNumeros] = useState({
-    num1:0,
-    num2:0
-  });
- 
-  const [checked, setChecked] = useState(true);
-  const imagenUrl = "https://i.blogs.es/594843/chrome/1366_2000.jpg";
 
-  const manejarKeyUp = (textoInput: string) => {
-    console.log(textoInput);
-    setTexto(textoInput);
-  };
+  const [peliculas, setPeliculas] =  useState<typeMovies>({})
+  useEffect(() => {
+    const timerId = setTimeout(() =>{
+      setPeliculas({enCartelera: [
+        {
+          id: 1,
+          titulo: "Spiderman 2",
+          poster: "https://m.media-amazon.com/images/I/51hacb4+CFL._AC_.jpg",
+        },
+        {
+          id: 2,
+          titulo: "Resident Evil Welcome to Racconn City ",
+          poster:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwtL01rIBBO0-TJ664EiFdAfxmlfaXyg_yvsni7jMdzK123Li",
+        },
+        {
+          id: 3,
+          titulo: "The Matrix Resurretions",
+          poster:
+            "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/HMDWDOHQ2FFVRCLNHFLHR4NEJQ.jpeg",
+        },
+      ],
+      proximosEstrenos:[
+        {
+          id: 4,
+          titulo: "The Batman",
+          poster:
+            "https://media.vandal.net/i/620x926/11-2021/202111101637211_2.jpg",
+        },
+        {
+          id: 5,
+          titulo: "Sonic 2",
+          poster: "https://img.ecartelera.com/noticias/fotos/67200/67267/1.jpg",
+        },
+      ]
+     })
+    },2500)
+    return () => clearTimeout(timerId);
+   
+  })
 
-const suma = (numero1:number,numero2:number) => {
-   let result: number = numero1 + numero2
-   return result
-}
-  const cuadrado = <div style={{backgroundColor:'red',width:'50px',height:'50px',marginLeft:'1rem'}}></div>
-  const calificaciones = [
-    {nombre:'Antonio',calificacion:7},
-    {nombre:'Claudia',calificacion:4},
-    {nombre:'Angelo',calificacion:1},
-  
-  ]
 
   return (
     <>
-      <h1>Soy APP.tsx</h1>
+    <div className="container" > 
+      <div>
+        <Button>soy boton</Button>
+          <h3>En Cartelera</h3>
+          <ListadoPeliculas peliculas={peliculas.enCartelera} />
+        </div>
 
-    <ValorContext.Provider value={texto}>
-      <Abuelo />
-    </ValorContext.Provider>
-    <div>
-      <input type="checkbox" 
-       onChange={(e) => setChecked(e.currentTarget.checked)}
-       checked={checked}
-      />Mostrar componente useEffect
-    </div>
-    {checked ? <EjemploUseEffect/> : null}
-   
-
-     {calificaciones.map(val => <ContenidoDinamico key={val.nombre} {...val} />)}
-      <ProyectarContenido 
-       children={<p>Proyectando Contenido</p>}
-      />
+      <div>
+        <h3>Proximos Estrenos </h3>
+        <ListadoPeliculas peliculas={peliculas.proximosEstrenos} />
+      </div>
      
-      
-      <ProyectarContenido2 
-      parteSuperior={<h4>este es un mensaje del componente padre</h4>}
-      
-      parteInferior = {cuadrado}
-      />
-      <button
-        onClick={() => setNumero(numero + 1)}
-        onMouseEnter={() => console.log("Entrando")}
-      >
-        click
-      </button>
-      <button onClick={() => setNumero(0)}>reset</button>
-      <label id="contador">{numero.toString()}</label>
-      <br></br>
-      <FormularioTexto manejarKeyUp={(e : string) => manejarKeyUp(e)} />
+    </div>
     
-      <MostrarTexto texto={texto} />
-      <br />
-      <img
-        style={{
-          borderStyle: "dotted",
-          borderRadius: "10px",
-          borderColor: "rgb(236, 63, 26)",
-          width: "25%",
-          marginLeft: "16px",
-        }}
-        src={imagenUrl}
-        alt="imagen google"
-      ></img>
-
-      <input type="text" name="num1" onChange={(e)  => {
-        setNumeros(({...numeros,num1:parseInt(e.target.value)}))
-        
-        }}/>
-
-<input type="text" name="num2" onChange={(e)  => {
-      setNumeros(({...numeros,num2:parseInt(e.target.value)}))
-        }}/>
-
-        {<div>{numeros.num1 && numeros.num2? suma(numeros.num1,numeros.num2): "resultado"}</div>}
     </>
   );
 }
-
 
 export default App;

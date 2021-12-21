@@ -1,16 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import EjemploReloj from './Ejemplo/EjemploReloj';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-import EjemploCSS from './Ejemplo/EjemploCss';
-
+import "../node_modules/bootstrap/dist/css/bootstrap.css"
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <EjemploReloj/>
-    <EjemploCSS/>
   </React.StrictMode>,
   document.getElementById('root')
 );
