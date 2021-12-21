@@ -3,6 +3,7 @@ import "./App.css";
 import ListadoPeliculas from "./peliculas/ListadoPeliculas";
 import {typeMovies} from "./peliculas/PeliculasModelD";
 import Button from "./utils/Button";
+import Menu from "./utils/Menu";
 
 function App() {
 
@@ -50,9 +51,9 @@ function App() {
 
   return (
     <>
+       <Menu/>
     <div className="container" > 
       <div>
-        <Button>soy boton</Button>
           <h3>En Cartelera</h3>
           <ListadoPeliculas peliculas={peliculas.enCartelera} />
         </div>
