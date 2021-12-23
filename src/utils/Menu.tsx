@@ -9,10 +9,27 @@ export default function Menu() {
         </NavLink>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto ">
-            <li className="nav-item"></li>
+            <li className="nav-item">
             <NavLink className="nav-link" to="/generos">
               Generos
             </NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" to="/peliculas/filtrar">
+              Filtrar Peliculas
+            </NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" to="/actores">
+              Actores
+            </NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" to="/cines">
+              Cines
+            </NavLink>
+            </li>
+          
           </ul>
         </div>
       </div>
