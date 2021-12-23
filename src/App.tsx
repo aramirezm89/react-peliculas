@@ -3,6 +3,7 @@ import "./App.css";
 import IndiceGeneros from "./peliculas/generos/IndiceGeneros";
 import PaginaPrincipal from "./peliculas/PaginaPrincipal";
 import Menu from "./utils/Menu";
+import routes from "./peliculas/Routes/RoutesConfig"
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
         <Menu />
         <div className="container">
           <Routes>
-            <Route path="/" element={<PaginaPrincipal />} />
-            <Route path="/generos" element={<IndiceGeneros />} />
+              {routes.map(ruta => <Route key={ruta.path}  path={ruta.path} element={ruta.componente} />)}
           </Routes>
         </div>
       </BrowserRouter>
