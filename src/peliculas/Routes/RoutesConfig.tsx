@@ -17,19 +17,21 @@ const routes=[
     {path:"/", componente: <PaginaPrincipal/>},
     {path:"/generos", componente :  <IndiceGeneros/>},
     {path:"/generos/crear", componente :  <CrearGeneros/>},
-    {path:"/generos/editar", componente :  <EditarGeneros/>},
+    {path:"/generos/editar/:id", componente :  <EditarGeneros/>},
     
     {path:"/actores", componente :  <IndiceActores/>},
     {path:"/actores/crear", componente :  <CrearActores/>},
-    {path:"/actores/editar", componente :  <EditarActores/>},
+    {path:"/actores/editar/:id", componente :  <EditarActores/>},
 
     {path:"/cines", componente :  <IndiceCines/>},
     {path:"/cines/crear", componente :  <CrearCines/>},
-    {path:"/cines/editar", componente :  <EditarCines/>},
+    {path:"/cines/editar/:id", componente :  <EditarCines/>},
 
     {path:"/peliculas/filtrar", componente :  <FiltroPeliculas/>},
     {path:"/peliculas/crear", componente :  <CrearPeliculas/>},
-    {path:"/peliculas/editar", componente :  <EditarPeliculas/>},
+    {path:"/peliculas/editar/:id", componente :  <EditarPeliculas/>},
+    {path:"*", componente:<PaginaPrincipal/>},
+
 
 ]
 

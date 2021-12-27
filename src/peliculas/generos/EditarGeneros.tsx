@@ -1,5 +1,14 @@
+import { useParams } from "react-router-dom"
+
 export default function EditarGeneros(){
+    
+    const {id} =  useParams();
+
+    
     return(
-        <h3>Editar generos</h3>
+       <div>
+            <h3>Editar generos</h3>
+            <h4>El id es {id}</h4>
+       </div>
     )
 }
