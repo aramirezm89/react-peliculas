@@ -3,7 +3,9 @@ import "./App.css";
 import IndiceGeneros from "./peliculas/generos/IndiceGeneros";
 import PaginaPrincipal from "./peliculas/PaginaPrincipal";
 import Menu from "./utils/Menu";
-import routes from "./peliculas/Routes/RoutesConfig"
+import routes from "./peliculas/Routes/RoutesConfig";
+import configurarValidaciones from "./Validaciones/Validaciones";
+configurarValidaciones();
 
 function App() {
   return (

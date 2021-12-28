@@ -18,10 +18,13 @@ export default function CrearGeneros() {
             nombre: '',
           }}
           onSubmit={(values) => {
-            console.log(values);
+             
+             console.log(values.nombre)
+             
           }}
           validationSchema={yup.object({
-            nombre: yup.string().required('Este campo es requerido.').max(50,'campo no permite mas de 50 caracteres').matches(/^[a-zA-Z_ ]+$/,'Campo no puede contener numeros.' )
+            nombre: yup.string().required('Este campo es requerido.').min(2,"Minimo de caracteres 2").max(50,'campo no permite mas de 50 caracteres')
+            .matches(/^[a-zA-Z_ ]+$/,'Campo no puede contener numeros.' ).primeraLetraMayuscula()
           })}
         >
           <Form>
