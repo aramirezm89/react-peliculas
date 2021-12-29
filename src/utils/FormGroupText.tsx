@@ -10,6 +10,7 @@ export default function FormGroupText(props: FormGroupTextProps) {
           name={campo}
           className="form-control"
           placeholder={placeholder}
+          
         />
         <ErrorMessage name={campo}>
           {(mensaje) => <div className="text-danger">{mensaje}</div>}

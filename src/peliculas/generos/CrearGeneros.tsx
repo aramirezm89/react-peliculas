@@ -1,11 +1,9 @@
-import { Form, Formik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup";
-import Button from "../../utils/Button";
-import FormGroupText from "../../utils/FormGroupText";
+import { useNavigate } from "react-router-dom";
+import FormularioGeneros from "./FomularioGeneros";
 
 export default function CrearGeneros() {
   const navigate = useNavigate();
+  
   return (
     <div>
       <div>
@@ -13,28 +11,15 @@ export default function CrearGeneros() {
       </div>
 
       <div>
-        <Formik
-          initialValues={{
-            nombre: '',
+        <FormularioGeneros 
+           model={{nombre:''}}
+           onSubmit={async(values,actions) => {
+            await new Promise(result =>setTimeout(result,2000))
+            console.log(values)
+            actions.resetForm();
           }}
-          onSubmit={(values) => {
-             
-             console.log(values.nombre)
-             
-          }}
-          validationSchema={yup.object({
-            nombre: yup.string().required('Este campo es requerido.').min(2,"Minimo de caracteres 2").max(50,'campo no permite mas de 50 caracteres')
-            .matches(/^[a-zA-Z_ ]+$/,'Campo no puede contener numeros.' ).primeraLetraMayuscula()
-          })}
-        >
-          <Form>
-           <FormGroupText label="Nombre" campo="nombre" placeholder="Ingrese nombre del genero" />
-            <Button type="submit">Guardar</Button>
-            <Link className="btn btn-secondary" to="/generos">
-              Cancelar
-            </Link>
-          </Form>
-        </Formik>
+        
+        />
       </div>
     </div>
   );
