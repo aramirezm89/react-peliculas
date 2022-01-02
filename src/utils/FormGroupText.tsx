@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from "formik";
 
-export default function FormGroupText(props: FormGroupTextProps) {
+export default function   FormGroupText(props: FormGroupTextProps) {
   const { campo, label, placeholder } = props;
   return (
     <>
