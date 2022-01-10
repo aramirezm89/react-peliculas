@@ -39,7 +39,7 @@ export default function FiltroPeliculas() {
                 </div>
 
                 <div className="form-group mx-sm-3 mb-2">
-                  <Field as="select" className="form-control" name="generoId">
+                  <Field component="select" className="form-control" name="generoId">
                     <option value="0">--Seleccione un género</option>
                     {generos.map((genero) => (
                       <option key={genero.id} value={genero.id}>
