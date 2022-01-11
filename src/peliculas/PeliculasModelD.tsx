@@ -12,6 +12,7 @@ export interface peliculasCreacion{
     poster?:File;
     posterURL?: string;
     generosIds?:number[];
+    cinesIds?:number[];
 }
 
 export interface typeMovies{

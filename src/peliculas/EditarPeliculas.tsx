@@ -1,3 +1,4 @@
+import { cineModelConId } from "./Cines/CinesModelo";
 import FormularioPeliculas from "./FormularioPeliculas";
 import { generoModelConId } from "./generos/GeneroModel";
 
@@ -13,10 +14,22 @@ export default function EditarPeliculas(){
         { id: 3, nombre: "Comedia" },
         { id: 4, nombre: "Drama" },
       ];
+
+      const cinesNoseleccionados : cineModelConId[] = [
+        {id:1,nombre:'Cinemark'},
+        {id:3,nombre:'CinePlanet'}
+      ]
+
+      const cinesSeleccionados: cineModelConId[] = [
+        {id:2,nombre:'Cine Hoyts'}
+      ]
     return(
         <div>
             <h3>Editar Peliculas</h3>
             <FormularioPeliculas
+            
+             cinesSeleccionados={cinesSeleccionados}
+             cinesNoSeleccionados={cinesNoseleccionados}
             generosSeleccionados={generosSeleccionados}
             generosNoSeleccionados={generosNoSeleccionados}
              model={{titulo:'The Batman',enCines:false,trailer:'url',

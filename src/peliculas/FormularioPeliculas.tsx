@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import SelectorMultiple,{selectorMultipleModel} from "../utils/SelectorMultiple";
 import { useState } from "react";
 import {generoModelConId} from "../peliculas/generos/GeneroModel"
+import { cineModelConId } from "./Cines/CinesModelo";
 
 
 export default function FormularioPeliculas(props:formularioPeliculasProps){
@@ -17,6 +18,9 @@ export default function FormularioPeliculas(props:formularioPeliculasProps){
 
     const [generosSeleccionados,setGenerosSeleccionados] = useState(mapear(props.generosSeleccionados));
     const [generosNoSeleccionados,setGenerosNoSeleccionados] = useState(mapear(props.generosNoSeleccionados));
+
+    const [cinesSeleccionados,setCinesSeleccionados] = useState(mapear(props.cinesSeleccionados))
+    const [cinesNoSeleccionados,setCinesNoSeleccionados] = useState(mapear(props.cinesNoSeleccionados))
 
     function mapear(arreglo:{id:number,nombre:string}[]) : selectorMultipleModel[]{
         return arreglo.map(valor => {
@@ -29,6 +33,7 @@ export default function FormularioPeliculas(props:formularioPeliculasProps){
         initialValues={model}
         onSubmit={(valores,acciones) =>{
             valores.generosIds = generosSeleccionados.map(valor => valor.key);
+            valores.cinesIds = cinesSeleccionados.map(valor => valor.key);
             onSubmit(valores,acciones);
 
         }}
@@ -55,6 +60,15 @@ export default function FormularioPeliculas(props:formularioPeliculasProps){
                      setGenerosNoSeleccionados(noSeleccionados);
                     }}/>
                 </div>
+
+                <div className="form-group mt-3">
+                    <label>Cines</label>
+                    <SelectorMultiple seleccionados={cinesSeleccionados} noSeleccionados={cinesNoSeleccionados} 
+                    onChange={(seleccionados,noSeleccionados)=>{
+                     setCinesSeleccionados(seleccionados);
+                     setCinesNoSeleccionados(noSeleccionados);
+                    }}/>
+                </div>
                <div className="mt-3">
                <Button disabled={formikProps.isSubmitting} type="submit">Guardar</Button>
                 <Link className="btn btn-secondary" to="/">Cancelar</Link>
@@ -70,4 +84,6 @@ interface formularioPeliculasProps{
     onSubmit(values:peliculasCreacion,actions:FormikHelpers<peliculasCreacion>):void;
     generosSeleccionados:generoModelConId[];
     generosNoSeleccionados: generoModelConId[];
+    cinesSeleccionados: cineModelConId[];
+    cinesNoSeleccionados: cineModelConId[];
 }

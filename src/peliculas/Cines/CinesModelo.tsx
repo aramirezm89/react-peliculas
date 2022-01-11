@@ -3,3 +3,10 @@ export interface cine{
     latitud?:number,
     longitud?:number;
 }
+
+export interface cineModelConId{
+    id: number;
+    nombre: string;
+    latitud?:number;
+    longitud?:number;
+}
