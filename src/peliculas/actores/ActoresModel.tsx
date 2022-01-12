@@ -14,3 +14,10 @@ export interface actoresWhithId{
     imagenURL?:string;
     biografia?:string;
 }
+
+export interface actorPelicula{
+    id:number;
+    nombre:string;
+    personaje:string;
+    foto: string;
+}
