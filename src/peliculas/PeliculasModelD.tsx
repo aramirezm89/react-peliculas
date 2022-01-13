@@ -1,3 +1,5 @@
+import { actorPelicula } from "./actores/ActoresModel";
+
 export interface pelicula{
     id: number;
     titulo: string;
@@ -13,6 +15,7 @@ export interface peliculasCreacion{
     posterURL?: string;
     generosIds?:number[];
     cinesIds?:number[];
+    actores?:actorPelicula[];
 }
 
 export interface typeMovies{
