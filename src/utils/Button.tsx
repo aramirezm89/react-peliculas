@@ -1,8 +1,8 @@
 
 export default function Button(props:buttonProps){
-    const {children,onClick,type,disabled,className} = props;
+    const {children,onClick,type,disabled,className,style} = props;
     return(
-        <button type={type} disabled={disabled} onClick={onClick} className={className}>{children}</button>
+        <button type={type} disabled={disabled} style={style} onClick={onClick} className={className}>{children}</button>
     )
 }
 
@@ -12,6 +12,7 @@ interface buttonProps{
     type: "button" | "submit"
     disabled:boolean,
     className:string
+    style?:object
 }
 
 Button.defaultProps = {
