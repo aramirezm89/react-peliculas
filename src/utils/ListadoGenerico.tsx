@@ -24,6 +24,6 @@ export default function ListadoGenerico(props:ListadoGenericoProps){
 interface ListadoGenericoProps{
     listado:any;
     children:ReactElement;
-    cargandoUI?:ReactElement;
-    listadoVacioUI?: ReactElement;
+    cargandoUI?:ReactElement 
+    listadoVacioUI?: ReactElement
 }

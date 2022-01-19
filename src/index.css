@@ -16,3 +16,7 @@ code {
 .rojo{
   color: red;
 }
+
+.pointer{
+  cursor: pointer;
+}
