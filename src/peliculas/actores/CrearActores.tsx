@@ -1,5 +1,5 @@
 import FormularioActores from "./FormularioActores";
-
+import crearEntidad from "../../api/CrearEntidad"
 export default function CrearActores(){
     return(
         <div>
@@ -7,9 +7,9 @@ export default function CrearActores(){
             <FormularioActores
             model={{nombre:'',fechaNacimiento:undefined}} 
             onSubmit={async(values,actions) => {
-               await  new Promise(result => setTimeout(result,2000))
-                console.log(values)
-                actions.resetForm();
+             crearEntidad(values,"actores")
+              console.log(values)
+            
             }}
             />
         </div>

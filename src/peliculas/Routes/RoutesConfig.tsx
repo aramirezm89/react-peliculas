@@ -17,7 +17,7 @@ const routes=[
     {path:"/", componente: <PaginaPrincipal/>},
     {path:"/generos", componente :  <IndiceGeneros/>},
     {path:"/generos/crear", componente :  <CrearGeneros/>},
-    {path:"/generos/editar/:id", componente :  <EditarGeneros/>},
+    {path:"/generos/editar/:id/:nombre", componente :  <EditarGeneros/>},
     
     {path:"/actores", componente :  <IndiceActores/>},
     {path:"/actores/crear", componente :  <CrearActores/>},

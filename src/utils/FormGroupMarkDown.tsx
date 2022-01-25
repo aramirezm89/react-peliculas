@@ -9,7 +9,7 @@ export default function FormGroupMArkDown(props: formGroupMarkDownProps) {
       <div>
         <label htmlFor={campo}>{label}</label>
         <div>
-          <Field name={campo} as="textarea" className="form-textarea" />
+          <Field name={campo} id={campo} as="textarea" className="form-textarea" />
         </div>
       </div>
       <div>

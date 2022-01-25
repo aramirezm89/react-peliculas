@@ -1,5 +1,5 @@
 export interface generoModel{
-    nombre: string
+    nombre?: string
 }
 
 export interface generoModelConId{

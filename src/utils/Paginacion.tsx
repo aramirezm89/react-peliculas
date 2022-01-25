@@ -94,6 +94,7 @@ export default function Paginacion(props: paginacionProps) {
       <ul className="pagination justify-content-center">
         {listadoLinks.map((link) => (
           <li
+          role="button"
             key={link.texto}
             onClick={() => seleccionarPagina(link)}
             className={`page-item cursor ${obtenerClase(link)}`}
@@ -124,4 +125,8 @@ interface paginacionProps {
   cantidadTotalDePaginas: number;
   radio: number;
   onChange(pagina: number): void;
+}
+
+Paginacion.defaultProps = {
+radio : 3
 }

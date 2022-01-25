@@ -1,34 +1,49 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import FormularioGeneros from "./FomularioGeneros";
 import { BasePath } from "../../utils/BasePathApi";
 import axios, { AxiosResponse } from "axios";
 import { generoModel, generoModelConId} from "./GeneroModel";
+import { toast } from "react-toastify";
+import editarEntidad from "../../api/EditarEntidad";
 export default function EditarGeneros(){
     
     const {id} =  useParams();
-    const [generoBD,setGeneroBD] = useState<string>("")
-  console.log(id);
+    const {nombre} = useParams();
 
-  useEffect(() => {
-    const URL = `${BasePath}/generos/${id}`;
-     axios.get(URL).then((response : AxiosResponse<generoModelConId>) =>{
-      setGeneroBD(response.data.nombre);
-      console.log(response.data.nombre);
-    } ).catch(error =>{
-      console.log(error);
-    })
-  },[])
+    const navigate = useNavigate();
+
+  function editarGenero(genero : generoModel){
     
+    const URL = `${BasePath}/generos/${id}`;
+     axios.put(URL,genero).then((response ) =>{
+      if(response.data.code === 200){
+        toast.success((response.data.message).toString(),{
+         position: toast.POSITION.TOP_RIGHT,
+         theme:"colored",
+         autoClose:1000
+         
+         }) 
+           navigate("/generos");
+         }  
+     }).catch(err =>{
+       toast.error((err.response.data).toString(),{position:toast.POSITION.TOP_RIGHT,theme:'colored', autoClose:1000})
+     })
+
+    } 
     return(
         <div>
             <h3>Editar Generos</h3>
         <FormularioGeneros 
-           model={{nombre:generoBD}}
-           onSubmit={async(values,actions) => {
-            await new Promise(result =>setTimeout(result,2000))
-            console.log(values)
-            actions.resetForm();
+           model={{nombre:nombre}}
+           onSubmit={(values,actions) => {
+         
+           editarEntidad(values,id,"/generos/").then(result =>{
+             if(result.code===200){
+               navigate("/generos")
+             }
+           })
+            
           }}
         
         />
