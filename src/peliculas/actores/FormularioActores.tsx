@@ -41,7 +41,7 @@ export default function FormularioActores(props: FormularioActoresProps) {
             imageUrl={model.imagenURL}
           />
           <FormGroupMarkDown campo="biografia" label="Bíografia" />
-          <Button type="submit" disabled={formikProps.isSubmitting}>
+          <Button type="submit" disabled={formikProps.isValidating}>
             Guardar
           </Button>
           <Link className="btn btn-secondary" to="/actores">
