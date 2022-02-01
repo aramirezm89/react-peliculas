@@ -21,3 +21,11 @@ export interface actorPelicula{
     personaje:string;
     foto: string;
 }
+
+export interface actorDTO{
+    id:number,
+    nombre:string,
+    biografia?:string,
+    fechaNacimiento?: Date
+    foto?: File;
+}

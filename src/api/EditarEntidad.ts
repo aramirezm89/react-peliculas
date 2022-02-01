@@ -4,7 +4,7 @@ import { BasePath } from "../utils/BasePathApi";
 import { useNavigate } from "react-router-dom"
 
 export default function editarEntidad(entidad:any,id:string|undefined,controlador:string){
-    const URL = `${BasePath}${controlador}${id}`;
+    const URL = `${BasePath}/${controlador}/${id}`;
    return axios.put(URL,entidad).then((response ) =>{
         if(response.data.code === 200){
           toast.success((response.data.message).toString(),{

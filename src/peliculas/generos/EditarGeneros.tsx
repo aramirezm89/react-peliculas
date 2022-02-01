@@ -38,7 +38,7 @@ export default function EditarGeneros(){
            model={{nombre:nombre}}
            onSubmit={(values,actions) => {
          
-           editarEntidad(values,id,"/generos/").then(result =>{
+           editarEntidad(values,id,"generos").then(result =>{
              if(result.code===200){
                navigate("/generos")
              }
