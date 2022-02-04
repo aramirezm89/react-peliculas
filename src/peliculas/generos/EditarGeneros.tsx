@@ -6,36 +6,30 @@ import axios, { AxiosResponse } from "axios";
 import { generoModel, generoModelConId} from "./GeneroModel";
 import { toast } from "react-toastify";
 import editarEntidad from "../../api/EditarEntidad";
+import Loading from "../../utils/Loading";
 export default function EditarGeneros(){
     
     const {id} =  useParams();
-    const {nombre} = useParams();
-
+    const [genero, setGenero] = useState<generoModelConId>()
     const navigate = useNavigate();
-
-  function editarGenero(genero : generoModel){
     
-    const URL = `${BasePath}/generos/${id}`;
-     axios.put(URL,genero).then((response ) =>{
-      if(response.data.code === 200){
-        toast.success((response.data.message).toString(),{
-         position: toast.POSITION.TOP_RIGHT,
-         theme:"colored",
-         autoClose:1000
-         
-         }) 
-           navigate("/generos");
-         }  
-     }).catch(err =>{
-       toast.error((err.response.data).toString(),{position:toast.POSITION.TOP_RIGHT,theme:'colored', autoClose:1000})
-     })
-
-    } 
+  
+    useEffect(() => {
+      getGenero();
+    })
+    function getGenero(){
+    const URL = `${BasePath}/generos/${id}`
+    axios.get(URL).then(reponse =>{
+      setGenero(reponse.data);
+    })
+    }
     return(
         <div>
-            <h3>Editar Generos</h3>
+          {genero?
+          <>
+                  <h3>Editar Generos</h3>
         <FormularioGeneros 
-           model={{nombre:nombre}}
+           model={{nombre:genero.nombre}}
            onSubmit={(values,actions) => {
          
            editarEntidad(values,id,"generos").then(result =>{
@@ -47,6 +41,7 @@ export default function EditarGeneros(){
           }}
         
         />
+        </>:<Loading />}
       </div>
     )
 }

@@ -52,10 +52,11 @@ export default function CrearGeneros() {
         <FormularioGeneros 
            model={{nombre:''}}
            onSubmit={async(values,actions) => {
-            crearEntidad(values,"genero").then(result =>{
+            crearEntidad(values,"generos").then(result =>{
               if(result.code === 200){
                 navigate("/generos")
               }
+              
             })
           }}
         

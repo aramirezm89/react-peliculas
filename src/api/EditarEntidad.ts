@@ -15,7 +15,7 @@ export default function editarEntidad(entidad:any,id:string|undefined,controlado
            }) 
             return response.data
            } else{
-            return toast.error((response.data.message).toString(),{position:toast.POSITION.TOP_RIGHT,theme:'colored', autoClose:1000})
+            return toast.error((response.data.message).toString(),{position:toast.POSITION.TOP_RIGHT,theme:'colored', autoClose:1500})
            } 
        }).catch(err =>{
        console.log(err)

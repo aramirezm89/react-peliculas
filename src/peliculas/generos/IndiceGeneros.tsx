@@ -181,7 +181,7 @@ export default function IndiceGeneros() {
                 <td className="text-center">
                   <Link
                     className="btn btn-primary mr-3"
-                    to={`/generos/editar/${genero.id}/${genero.nombre}`}
+                    to={`/generos/editar/${genero.id}`}
                   >
                     <FontAwesomeIcon icon={faEdit} title="Editar" />
                   </Link>
