@@ -1,37 +1,54 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { crearPeliculaFormData } from "../api/CrearPeliculaFormData";
+import { BasePath } from "../utils/BasePathApi";
+import Loading from "../utils/Loading";
 import { cineModelConId } from "./Cines/CinesModelo";
 import FormularioPeliculas from "./FormularioPeliculas";
 import { generoModelConId } from "./generos/GeneroModel";
 
 export default function CrearPeliculas() {
-  const generos: generoModelConId[] = [
-    { id: 1, nombre: "Acción" },
-    { id: 2, nombre: "Terror" },
-    { id: 3, nombre: "Comedia" },
-    { id: 4, nombre: "Drama" },
-  ];
 
-  const cines: cineModelConId[] = [
-    {id:1,nombre:'Cinemark'},
-    {id:2,nombre:'Cine Hoyts'},
-    {id:3,nombre:'CinePlanet'},
-  ]
+  const [generosNoSeleccionados,setGenerosNoSeleccionados] = useState<generoModelConId[]>([]);
+  const [cinesNoSeleccionados,setCinesNoSeleccionados] = useState<cineModelConId[]>([]);
+  const [cargado, setCargado] = useState(false);
+  
+  const navigate = useNavigate()
+ 
+  useEffect(() => {
+    const URL = `${BasePath}/peliculas/postget`
+    axios.get(URL).then(response =>{
+      setGenerosNoSeleccionados(response.data.generos)
+      setCinesNoSeleccionados(response.data.cines)
+      setCargado(true)  
+    })
+  },[])
+
+
 
   return (
     <div>
       <h3>Crear Peliculas</h3>
+      {cargado ?
       <FormularioPeliculas
       actoresSeleccionados={[]}
       generosSeleccionados={[]}
-      generosNoSeleccionados={generos}
+      generosNoSeleccionados={generosNoSeleccionados}
       cinesSeleccionados={[]}
-      cinesNoSeleccionados={cines}
+      cinesNoSeleccionados={cinesNoSeleccionados}
         model={{ titulo: "", enCines: false, trailer: "" }}
         onSubmit={async (values, actions) => {
-          await new Promise((resolve) => setTimeout(resolve, 2000));
+          crearPeliculaFormData(values).then(result =>{
+            if(result.code === 200){
+              navigate("/");
+            }
+          })
+          
           console.log(values);
-          actions.resetForm();
+        
         }}
-      />
+      />:<Loading />}
     </div>
   );
 }

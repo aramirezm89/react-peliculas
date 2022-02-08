@@ -13,6 +13,7 @@ import {generoModelConId} from "../peliculas/generos/GeneroModel"
 import { cineModelConId } from "./Cines/CinesModelo";
 import TypeaheadActores from "./actores/TypeaheadActores";
 import { actorPelicula } from "./actores/ActoresModel";
+import FormGroupMarkDown from "../utils/FormGroupMarkDown";
 
 
 export default function FormularioPeliculas(props:formularioPeliculasProps){
@@ -68,7 +69,7 @@ export default function FormularioPeliculas(props:formularioPeliculasProps){
                 <FormGroupText campo="trailer" label="Trailer" placeholder="URL trailer pelicula."/>
                 <FormGroupDate campo="fechaLanzamiento" label="Fecha Lanzamiento" />
                 <FormGroupImage campo="poster" label="Poster" imageUrl={model.posterURL}/>
-
+                <FormGroupMarkDown campo="resumen" label="Resumen" />
                 <div className="form-group mt-3">
                     <label>Generos</label>
                     <SelectorMultiple seleccionados={generosSeleccionados} noSeleccionados={generosNoSeleccionados} 

@@ -1,4 +1,5 @@
 import { actores } from "../peliculas/actores/ActoresModel";
+import { peliculasCreacion } from "../peliculas/PeliculasModelD";
 
 /**
  * La siguiente funcion se realizo para transformar a FormData los datos para crear actor, ya que el back-end 
@@ -20,6 +21,32 @@ export function convertirActorFormData(actor: actores): FormData {
   return formData;
 }
 
+
+
+export function convertirPeliculaFormData(pelicula: peliculasCreacion): FormData{
+  const formData = new FormData();
+  formData.append("titulo",pelicula.titulo)
+  if(pelicula.resumen){
+    formData.append("resumen",pelicula.resumen)
+  }
+  formData.append("trailer",pelicula.trailer)
+
+  formData.append("enCines",String(pelicula.enCines))
+
+  if(pelicula.fechaLanzamiento){
+  formData.append("fechaLanzamiento",formatearFecha(pelicula.fechaLanzamiento))
+  }
+
+  if(pelicula.poster){
+    formData.append("poster",pelicula.poster)
+  }
+
+  formData.append("generosIds",JSON.stringify(pelicula.generosIds))
+  formData.append("cinesIds",JSON.stringify(pelicula.cinesIds))
+  formData.append("actores",JSON.stringify(pelicula.actores))
+
+  return formData
+}
 function formatearFecha(date: Date) {
   date = new Date(date);
 

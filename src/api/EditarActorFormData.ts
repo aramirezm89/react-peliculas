@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { actores } from "../peliculas/actores/ActoresModel";
 import { BasePath } from "../utils/BasePathApi";
-import { convertirActorFormData } from "./ConvertirActorFormData";
+import { convertirActorFormData } from "./ConvertirEntidadFormData";
 
 
 /**

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { actores } from "../peliculas/actores/ActoresModel";
+import { peliculasCreacion } from "../peliculas/PeliculasModelD";
 import { BasePath } from "../utils/BasePathApi";
-import { convertirActorFormData } from "./ConvertirEntidadFormData";
+import { convertirPeliculaFormData } from "./ConvertirEntidadFormData";
 
 /**
  * Esta funcion manda la peticion al back-end transformando los datos del formulario a FORM-DATA
@@ -11,11 +11,11 @@ import { convertirActorFormData } from "./ConvertirEntidadFormData";
  *
  *
  */
-export async function crearActorFormData(actor: actores) {
-  const formData = convertirActorFormData(actor);
+export async function crearPeliculaFormData(pelicula: peliculasCreacion ) {
+  const formData = convertirPeliculaFormData(pelicula);
   return await axios({
     method: "post",
-    url: `${BasePath}/actores`,
+    url: `${BasePath}/peliculas`,
     data: formData,
     headers: { "Content-Type": "multipart/form-data" },
   })
