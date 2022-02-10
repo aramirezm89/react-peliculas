@@ -41,8 +41,9 @@ export default function CrearPeliculas() {
         onSubmit={async (values, actions) => {
           crearPeliculaFormData(values).then(result =>{
             if(result.code === 200){
-              navigate("/");
+              navigate(`/peliculas/detalle/${result.idPelicula}`);
             }
+            console.log(result);
           })
           
           console.log(values);

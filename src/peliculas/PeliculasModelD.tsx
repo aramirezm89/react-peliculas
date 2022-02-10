@@ -30,3 +30,16 @@ export interface peliculasPostGet{
     generos : generoModelConId[];
     cines : cineModelConId[];
 }
+
+export interface peliculaDetalle{
+    id:number;
+    titulo:string;
+    enCines:boolean;
+    trailer: string;
+    resumen?:string 
+    fechaLanzamiento?:Date;
+    poster?: string;
+    generosIds?:number[];
+    cinesIds?:number[];
+    actores?:actorPelicula[];
+}

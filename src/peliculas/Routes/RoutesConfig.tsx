@@ -5,6 +5,7 @@ import CrearCines from "../Cines/CrearCines";
 import EditarCines from "../Cines/EditarCines";
 import IndiceCines from "../Cines/IndiceCines";
 import CrearPeliculas from "../CrearPeliculas";
+import DetallePelicula from "../DetallePelicula";
 import EditarPeliculas from "../EditarPeliculas";
 import FiltroPeliculas from "../FiltroPeliculas";
 import CrearGeneros from "../generos/CrearGeneros";
@@ -30,6 +31,7 @@ const routes=[
     {path:"/peliculas/filtrar", componente :  <FiltroPeliculas/>},
     {path:"/peliculas/crear", componente :  <CrearPeliculas/>},
     {path:"/peliculas/editar/:id", componente :  <EditarPeliculas/>},
+    {path:"/peliculas/detalle/:id", componente :  <DetallePelicula/>},
     {path:"*", componente:<PaginaPrincipal/>},
 
 
