@@ -2,7 +2,7 @@ import { NavLink,Link } from "react-router-dom";
 
 export default function Menu() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           React Peliculas

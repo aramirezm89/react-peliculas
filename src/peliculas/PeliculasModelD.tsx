@@ -22,7 +22,7 @@ export interface peliculasCreacion{
 }
 
 export interface typeMovies{
-    enCartelera?: pelicula[]
+    enCines?: pelicula[]
     proximosEstrenos?:pelicula[]
 }
 

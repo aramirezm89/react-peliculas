@@ -35,8 +35,7 @@ async function  detallePelicula(){
  function detallePeliculaGeneros(){
     const URL  = `${BasePath}/peliculas/generos/${id}`;
     axios.get(URL).then(response => {
-     setGeneros(response.data.generos);
-     console.log(response.data.generos);
+     setGeneros(response.data);
     })
 }
 return(

@@ -1,6 +1,8 @@
 import React from 'react';
 import { pelicula } from "./PeliculasModelD";
 import css from './PeliculaIndividual.module.css';
+import { Link } from 'react-router-dom';
+import Button from '../utils/Button';
 export default function Peliculaindividual(props : peliculaIndividualProps ){
     const {id,titulo,poster} = props.pelicula;
     
@@ -12,7 +14,11 @@ export default function Peliculaindividual(props : peliculaIndividualProps ){
             </a>
             <p className="mt-3">
                 <a href={construirLink()}>{titulo}</a>
-            </p>
+            </p> 
+            <div>
+                <Link className="mr-2  btn btn-info " to={`/peliculas/editar/${props.pelicula.id}`}>Editar</Link>
+                <Button className="btn btn-danger">Borrar</Button>
+            </div>
         </div>
     )
 }
