@@ -1,6 +1,6 @@
 import { actorPelicula } from "./actores/ActoresModel";
 import { cineModelConId } from "./Cines/CinesModelo";
-import { generoModelConId } from "./generos/GeneroModel";
+import { generoModel, generoModelConId } from "./generos/GeneroModel";
 
 export interface pelicula{
     id: number;
@@ -42,4 +42,16 @@ export interface peliculaDetalle{
     generosIds?:number[];
     cinesIds?:number[];
     actores?:actorPelicula[];
+}
+
+export interface peliculasPutGetDTO{
+    pelicula: pelicula,
+    generosSeleccionados: generoModelConId[],
+    generosNoSeleccionados: generoModelConId[],
+    cinesSeleccionados : cineModelConId[],
+    cinesNoSeleccionados : cineModelConId[],
+    actores: actorPelicula[];
+
+
+
 }
