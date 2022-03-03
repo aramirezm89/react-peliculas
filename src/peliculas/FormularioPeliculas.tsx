@@ -58,7 +58,7 @@ export default function FormularioPeliculas(props:formularioPeliculasProps){
         validationSchema={yup.object({
             titulo: yup.string().required('Este campo es obligatorio.').primeraLetraMayuscula()
             . max(50,'campo no permite mas de 50 caracteres'),
-            trailer: yup.string().required('Este campo es obligatorio.').url()
+            trailer: yup.string().required('Este campo es obligatorio.').matches(/((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]{10}).\b/,"Link de youtube no valido.")
            
         })}
         >
