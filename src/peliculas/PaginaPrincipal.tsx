@@ -4,6 +4,7 @@ import { typeMovies } from "../peliculas/PeliculasModelD";
 import { BasePath } from "../utils/BasePathApi";
 import ListadoPeliculas from "./ListadoPeliculas";
 import AlertaContext from  "../utils/AlertContext";
+import Autorizado from "../auth/Autorizado";
 export default function PaginaPrincipal() {
   const [peliculas, setPeliculas] = useState<typeMovies>({});
  
@@ -21,6 +22,11 @@ export default function PaginaPrincipal() {
 
   return (
     <>
+      <Autorizado
+          autorizado={<>Estas autorizado. </>}
+          noAutorizado={<>No estas autorizado. </>}
+      />
+
        <AlertaContext.Provider value={() => cargarDatos()}>
         <div>
           <h3>En Cartelera</h3>
