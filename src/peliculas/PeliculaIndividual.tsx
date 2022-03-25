@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import eliminarRegistro from '../api/EliminarRegistro';
 import sweetalert from "sweetalert2";
 import AlertaContext from '../utils/AlertContext';
+import Autorizado from '../auth/Autorizado';
 export default function Peliculaindividual(props : peliculaIndividualProps ){
     const {id,titulo,poster} = props.pelicula;
     const alerta = useContext(AlertaContext);
@@ -71,7 +72,7 @@ export default function Peliculaindividual(props : peliculaIndividualProps ){
 
 
 
-    const construirLink  = () => `/pelicula/${id}`;
+    const construirLink  = () => `/peliculas/detalle/${id}`;
     return (
         <div className={css.div} >
             <a href={construirLink()}>
@@ -80,10 +81,12 @@ export default function Peliculaindividual(props : peliculaIndividualProps ){
             <p className="mt-3">
                 <a href={construirLink()}>{titulo}</a>
             </p> 
-            <div>
-                <Link className="mr-2  btn btn-info " to={`/peliculas/editar/${props.pelicula.id}`}>Editar</Link>
-                <Button className="btn btn-danger"   onClick={() => alertaDelete(props.pelicula.id)}>Borrar</Button>
-            </div>
+           <Autorizado role="admin" autorizado={ 
+              <div>
+                    <Link className="mr-2  btn btn-info " to={`/peliculas/editar/${props.pelicula.id}`}>Editar</Link>
+                    <Button className="btn btn-danger"   onClick={() => alertaDelete(props.pelicula.id)}>Borrar</Button>
+                </div>} 
+            />
         </div>
     )
 }

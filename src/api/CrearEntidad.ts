@@ -13,7 +13,9 @@ export default async function crearEntidad(entidad: any,controlador: string){
           autoClose:1500
           
           }) 
+        
            return response.data;
+           
           }else{
           
            return toast.error((response.data.message).toString(),{position:toast.POSITION.TOP_RIGHT,theme:'colored', autoClose:2000})

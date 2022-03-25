@@ -1,3 +1,6 @@
+import IndiceUsuarios from "../../auth/IndiceUsuarios";
+import Login from "../../auth/Login";
+import Registro from "../../auth/Registro";
 import CrearActores from "../actores/CrearActores";
 import EditarActores from "../actores/EditarActores";
 import IndiceActores from "../actores/IndiceActores";
@@ -16,22 +19,26 @@ import PaginaPrincipal from "../PaginaPrincipal";
 const routes=[
    
     {path:"/", componente: <PaginaPrincipal/>},
-    {path:"/generos", componente :  <IndiceGeneros/>},
-    {path:"/generos/crear", componente :  <CrearGeneros/>},
-    {path:"/generos/editar/:id", componente :  <EditarGeneros/>},
+    {path:"/generos", componente :  <IndiceGeneros/>,esAdmin:true},
+    {path:"/generos/crear", componente :  <CrearGeneros/>,esAdmin:true},
+    {path:"/generos/editar/:id", componente :  <EditarGeneros/>,esAdmin:true},
     
-    {path:"/actores", componente :  <IndiceActores/>},
-    {path:"/actores/crear", componente :  <CrearActores/>},
-    {path:"/actores/editar/:id", componente :  <EditarActores/>},
+    {path:"/actores", componente :  <IndiceActores/>,esAdmin:true},
+    {path:"/actores/crear", componente :  <CrearActores/>,esAdmin:true},
+    {path:"/actores/editar/:id", componente :  <EditarActores/>,esAdmin:true},
 
-    {path:"/cines", componente :  <IndiceCines/>},
-    {path:"/cines/crear", componente :  <CrearCines/>},
-    {path:"/cines/editar/:id", componente :  <EditarCines/>},
+    {path:"/cines", componente :  <IndiceCines/>,esAdmin:true},
+    {path:"/cines/crear", componente :  <CrearCines/>,esAdmin:true},
+    {path:"/cines/editar/:id", componente :  <EditarCines/>,esAdmin:true},
 
     {path:"/peliculas/filtrar", componente :  <FiltroPeliculas/>},
-    {path:"/peliculas/crear", componente :  <CrearPeliculas/>},
-    {path:"/peliculas/editar/:id", componente :  <EditarPeliculas/>},
+    {path:"/peliculas/crear", componente :  <CrearPeliculas/> ,esAdmin:true},
+    {path:"/peliculas/editar/:id", componente :  <EditarPeliculas/> ,esAdmin:true},
     {path:"/peliculas/detalle/:id", componente :  <DetallePelicula/>},
+
+    {path:"registro",componente : <Registro/>},
+    {path:"login",componente : <Login/>},
+    {path:"usuarios",componente : <IndiceUsuarios/>,esAdmin:true},
     {path:"*", componente:<PaginaPrincipal/>},
 
 

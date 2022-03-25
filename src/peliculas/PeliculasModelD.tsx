@@ -42,6 +42,8 @@ export interface peliculaDetalle{
     generosIds?:number[];
     cinesIds?:number[];
     actores?:actorPelicula[];
+    votoUsuario?:number;
+    promedioVoto?:number;
 }
 
 export interface peliculasPutGetDTO{
@@ -51,7 +53,19 @@ export interface peliculasPutGetDTO{
     cinesSeleccionados : cineModelConId[],
     cinesNoSeleccionados : cineModelConId[],
     actores: actorPelicula[];
+}
 
-
-
+export interface peliculaDTO{
+    id:number;
+    titulo:string;
+    enCines:boolean;
+    trailer: string;
+    resumen?:string 
+    fechaLanzamiento?:Date;
+    poster?: string;
+    generos?:generoModelConId;
+    cines:cineModelConId[];
+    actores?:actorPelicula[];
+    votoUsuario?:number;
+    promedioVoto?:number;
 }

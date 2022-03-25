@@ -1,7 +1,7 @@
 import { ErrorMessage, Field } from "formik";
 
 export default function   FormGroupText(props: FormGroupTextProps) {
-  const { campo, label, placeholder } = props;
+  const { campo, label, placeholder,type} = props;
   return (
     <>
       <div className="form-group">
@@ -10,7 +10,7 @@ export default function   FormGroupText(props: FormGroupTextProps) {
           name={campo}
           className="form-control"
           placeholder={placeholder}
-          
+          type={type}
         />
         <ErrorMessage name={campo}>
           {(mensaje) => <div className="text-danger">{mensaje}</div>}
@@ -24,4 +24,9 @@ interface FormGroupTextProps {
   campo: string;
   placeholder?: string;
   label?: string;
+  type: string;
+}
+
+FormGroupText.defaultProps = {
+  type: 'text'
 }
