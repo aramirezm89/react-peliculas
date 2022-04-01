@@ -92,7 +92,7 @@ export default function DetallePelicula() {
           </label>
         </div>
       <div className="row col-lg-12 mt-3">
-        <div className="col-lg-4">
+        <div className="col-lg-4 mb-3">
           <img
             className=""
             src={pelicula?.poster}
@@ -102,6 +102,7 @@ export default function DetallePelicula() {
         </div>
         <div>
           <iframe
+          className="ml-3"
             title="youtube-trailer"
             width="560"
             height="315"

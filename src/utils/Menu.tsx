@@ -13,15 +13,27 @@ export default function Menu() {
     return claims.filter(claim => claim.nombre === "email")[0]?.value;
   }
 
+  function collapse(){
+    const navBar = document.getElementById('navbarScroll');
+    if(navBar!.classList.contains("collapse")){
+      navBar?.classList.remove("collapse")
+    }else{
+      navBar?.classList.add("collapse")
+    }
+   
+  }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-expand-xs navbar-light bg-light">
+      
         <NavLink className="navbar-brand" to="/">
           React Peliculas
         </NavLink>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav mr-auto ">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" onClick={() => collapse()} aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+        <div className="collapse navbar-collapse" id="navbarScroll">
+          <ul className="navbar-nav mr-auto my-lg-0 my-xs-0 navbar-nav-scroll">
             <li>
               <NavLink className="nav-link" to="/peliculas/filtrar">
                 Filtrar Peliculas
@@ -85,7 +97,7 @@ export default function Menu() {
               />
           </div>
         </div>
-      </div>
+      
     </nav>
   );
 }
